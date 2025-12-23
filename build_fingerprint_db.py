@@ -7,3 +7,10 @@ SONG_ID = 1
 
 fingerprints = np.load('fingerprints.npy', allow_pickle=True)
 
+conn = mysql.connector.connect(
+    host='localhost',
+    user='root',
+    password=''  
+)
+c = conn.cursor()
+
