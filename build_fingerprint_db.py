@@ -28,3 +28,8 @@ CREATE TABLE IF NOT EXISTS {TABLE_NAME} (
 for fp_hash, time_offset in fingerprints:
     c.execute(f'INSERT INTO {TABLE_NAME} (hash, song_id, time_offset) VALUES (%s, %s, %s)', (fp_hash, SONG_ID, int(time_offset)))
 
+conn.commit()
+c.close()
+conn.close()
+
+print(f"Inserted {len(fingerprints)} fingerprints into MySQL database '{DB_NAME}', table '{TABLE_NAME}' for song_id={SONG_ID}.")
