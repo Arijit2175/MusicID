@@ -25,3 +25,6 @@ CREATE TABLE IF NOT EXISTS {TABLE_NAME} (
 )
 ''')
 
+for fp_hash, time_offset in fingerprints:
+    c.execute(f'INSERT INTO {TABLE_NAME} (hash, song_id, time_offset) VALUES (%s, %s, %s)', (fp_hash, SONG_ID, int(time_offset)))
+
