@@ -9,3 +9,7 @@ else:
     x_norm = waveform
 print(f"Normalized waveform. Max amplitude: {np.max(np.abs(x_norm))}")
 
+hann_window = np.hanning(len(x_norm))
+x_windowed = x_norm * hann_window
+print(f"Applied Hann window. Windowed shape: {x_windowed.shape}")
+
