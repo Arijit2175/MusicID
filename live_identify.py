@@ -23,3 +23,8 @@ recording = sd.rec(int(DURATION * SAMPLING_RATE), samplerate=SAMPLING_RATE, chan
 sd.wait()
 waveform = recording.flatten()
 
+max_amp = np.max(np.abs(waveform))
+x_norm = waveform / max_amp if max_amp > 0 else waveform
+hann_window = np.hanning(len(x_norm))
+x_windowed = x_norm * hann_window
+
