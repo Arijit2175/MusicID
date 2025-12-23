@@ -85,7 +85,9 @@ if not song_matches:
 else:
     counter = Counter((song_id for song_id, _ in song_matches))
     best_song, best_count = counter.most_common(1)[0]
-    print(f"Most likely song_id: {best_song} (matches: {best_count})")
     offset_counter = Counter((offset for song_id, offset in song_matches if song_id == best_song))
     best_offset, offset_count = offset_counter.most_common(1)[0]
+    confidence = (best_count / len(fingerprints)) * 100 if len(fingerprints) > 0 else 0
+    print(f"\n🎵 Song Identified: song_id={best_song}")
     print(f"Best offset: {best_offset} (count: {offset_count})")
+    print(f"Confidence: {confidence:.1f}%\n")
