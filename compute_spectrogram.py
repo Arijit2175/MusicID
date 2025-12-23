@@ -13,3 +13,6 @@ spectrogram = np.abs(Zxx)
 
 print(f"Spectrogram shape: {spectrogram.shape} (freq bins × time frames)")
 
+np.save('spectrogram.npy', spectrogram)
+print("Spectrogram saved to spectrogram.npy")
+
