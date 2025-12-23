@@ -14,3 +14,6 @@ conn = mysql.connector.connect(
 )
 c = conn.cursor()
 
+c.execute(f"CREATE DATABASE IF NOT EXISTS {DB_NAME}")
+c.execute(f"USE {DB_NAME}")
+
