@@ -13,3 +13,5 @@ hann_window = np.hanning(len(x_norm))
 x_windowed = x_norm * hann_window
 print(f"Applied Hann window. Windowed shape: {x_windowed.shape}")
 
+np.save('preprocessed_waveform.npy', x_windowed)
+print("Pre-processed waveform saved to preprocessed_waveform.npy")
