@@ -18,3 +18,8 @@ TARGET_ZONE_TIME = 15
 DB_NAME = 'musicid_db'
 TABLE_NAME = 'fingerprints'
 
+print(f"Recording {DURATION} seconds of audio at {SAMPLING_RATE} Hz...")
+recording = sd.rec(int(DURATION * SAMPLING_RATE), samplerate=SAMPLING_RATE, channels=CHANNELS, dtype='float32')
+sd.wait()
+waveform = recording.flatten()
+
