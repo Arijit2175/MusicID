@@ -19,3 +19,5 @@ peaks = np.argwhere(mask & detected_peaks)
 
 print(f"Detected {len(peaks)} spectral peaks.")
 
+np.save('spectral_peaks.npy', peaks)
+print("Spectral peaks saved to spectral_peaks.npy")
