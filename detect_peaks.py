@@ -6,3 +6,6 @@ THRESHOLD_PERCENTILE = 75
 
 spectrogram = np.load('spectrogram.npy')
 
+threshold = np.percentile(spectrogram, THRESHOLD_PERCENTILE)
+mask = spectrogram >= threshold
+
