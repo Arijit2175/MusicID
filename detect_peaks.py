@@ -4,3 +4,5 @@ from scipy.ndimage import maximum_filter, generate_binary_structure, binary_eros
 NEIGHBORHOOD_SIZE = 20  
 THRESHOLD_PERCENTILE = 75  
 
+spectrogram = np.load('spectrogram.npy')
+
