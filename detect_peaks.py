@@ -15,3 +15,7 @@ background = (spectrogram == 0)
 eroded_background = binary_erosion(background, structure=structure, border_value=1)
 detected_peaks = local_max ^ eroded_background
 
+peaks = np.argwhere(mask & detected_peaks)
+
+print(f"Detected {len(peaks)} spectral peaks.")
+
