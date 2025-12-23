@@ -14,3 +14,5 @@ waveform = recording.flatten()
 
 print(f"Audio captured. Shape: {waveform.shape}")
 
+np.save('mic_recording.npy', waveform)
+print("Waveform saved to mic_recording.npy")
