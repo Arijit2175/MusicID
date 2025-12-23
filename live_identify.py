@@ -31,3 +31,13 @@ x_windowed = x_norm * hann_window
 frequencies, times, Zxx = stft(x_windowed, fs=SAMPLING_RATE, nperseg=N_PER_SEG, noverlap=N_PER_SEG - HOP_LENGTH)
 spectrogram = np.abs(Zxx)
 
+threshold = np.percentile(spectrogram, THRESHOLD_PERCENTILE)
+mask = spectrogram >= threshold
+structure = generate_binary_structure(2, 2)
+local_max = maximum_filter(spectrogram, footprint=np.ones((NEIGHBORHOOD_SIZE, NEIGHBORHOOD_SIZE))) == spectrogram
+background = (spectrogram == 0)
+eroded_background = binary_erosion(background, structure=structure, border_value=1)
+detected_peaks = local_max ^ eroded_background
+peaks = np.argwhere(mask & detected_peaks)
+peaks = peaks[np.argsort(peaks[:, 1])]
+
