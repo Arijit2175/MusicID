@@ -6,3 +6,15 @@ import hashlib
 import mysql.connector
 from collections import Counter
 
+SAMPLING_RATE = 44100
+DURATION = 5
+CHANNELS = 1
+N_PER_SEG = 4096
+HOP_LENGTH = 2048
+NEIGHBORHOOD_SIZE = 20
+THRESHOLD_PERCENTILE = 75
+FAN_VALUE = 5
+TARGET_ZONE_TIME = 15
+DB_NAME = 'musicid_db'
+TABLE_NAME = 'fingerprints'
+
