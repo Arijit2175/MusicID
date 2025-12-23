@@ -6,3 +6,5 @@ TARGET_ZONE_TIME = 15
 
 peaks = np.load('spectral_peaks.npy')
 
+peaks = peaks[np.argsort(peaks[:, 1])]
+
