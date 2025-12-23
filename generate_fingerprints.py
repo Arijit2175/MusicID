@@ -24,4 +24,5 @@ for i, anchor in enumerate(peaks):
 
 print(f"Generated {len(fingerprints)} fingerprints.")
 
-
+np.save('fingerprints.npy', fingerprints)
+print("Fingerprints saved to fingerprints.npy")
