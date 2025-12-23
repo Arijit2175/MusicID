@@ -17,3 +17,11 @@ c = conn.cursor()
 c.execute(f"CREATE DATABASE IF NOT EXISTS {DB_NAME}")
 c.execute(f"USE {DB_NAME}")
 
+c.execute(f'''
+CREATE TABLE IF NOT EXISTS {TABLE_NAME} (
+    hash VARCHAR(40),
+    song_id INT,
+    time_offset INT
+)
+''')
+
