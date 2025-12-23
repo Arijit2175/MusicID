@@ -28,3 +28,6 @@ x_norm = waveform / max_amp if max_amp > 0 else waveform
 hann_window = np.hanning(len(x_norm))
 x_windowed = x_norm * hann_window
 
+frequencies, times, Zxx = stft(x_windowed, fs=SAMPLING_RATE, nperseg=N_PER_SEG, noverlap=N_PER_SEG - HOP_LENGTH)
+spectrogram = np.abs(Zxx)
+
