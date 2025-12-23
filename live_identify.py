@@ -57,3 +57,23 @@ for i, anchor in enumerate(peaks):
 
 print(f"Generated {len(fingerprints)} live fingerprints.")
 
+conn = mysql.connector.connect(host='localhost', user='root', password='', database=DB_NAME)
+c = conn.cursor()
+song_matches = []
+for fp_hash, time_offset in fingerprints:
+    c.execute(f'SELECT song_id, time_offset FROM {TABLE_NAME} WHERE hash = %s', (fp_hash,))
+    results = c.fetchall()
+    for song_id, db_time in results:
+        song_matches.append((song_id, db_time - time_offset))
+
+conn.close()
+
+if not song_matches:
+    print("No matches found in database.")
+else:
+    counter = Counter((song_id for song_id, _ in song_matches))
+    best_song, best_count = counter.most_common(1)[0]
+    print(f"Most likely song_id: {best_song} (matches: {best_count})")
+    offset_counter = Counter((offset for song_id, offset in song_matches if song_id == best_song))
+    best_offset, offset_count = offset_counter.most_common(1)[0]
+    print(f"Best offset: {best_offset} (count: {offset_count})")
